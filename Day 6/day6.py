@@ -1,50 +1,47 @@
+
 with open('customs.txt', 'r', encoding='utf-8') as f:
     data = f.read()
 
     
 answers = []
-count = []
+count = 0
 pax = []
 # print(data)
 
 data = data.split('\n\n')
+
 # print(data)
 for line in data:
+    answers.append(line.split('\n'))
     pax.append(line.count('\n')+1)
-    answers.append(line.replace('\n',''))
+    # answers.append(line.replace('\n',''))
 
-
+# print(pax)
 # print(answers)
-letters = []
+letters = {}
 
-for i,line in enumerate(answers):
-    print(f'Group: {i}\tNumber of pax: {pax[i]}\tanswers: {line}\t ')
-    used = []
-    for o in line:
-        print(o)
-        if line.count(o) == pax[i] and o not in used:
-            used.append(o)
-    print(used)
-    count.append(len(used))
+class Alpha:
+    def __init__(self):
+        self.letters = {}
+        for i in range(97,97+26):
+            self.letters[chr(i)] = 0
+        # print(self.letters)
 
-    print()
-  
+# print(answers[0])
 
-print(f'# of Groups: {len(answers)}')
-print(sum(count))
+for i,group in enumerate(answers):
+    chars = Alpha()
+    print(i, group)
+    for person in group:
+        # print(person)
+        for letter in person:
+            chars.letters[letter] += 1
+    for i in chars.letters:
+        if len(group) == chars.letters[i]:
+            count += 1
+        
+        # print(chars.letters[i])
+        # print(len(group),chars.letters)
 
-
-
-
-'''
-    for o in line:
-        if line.count(o) == pax[i]:
-            allused.append(o)
-    if len(allused) > 0:
-        letters.extend(set(allused))
-    print(set(allused))
-    count += len(set(allused))
-'''
 print(count)
-print(sum(count))
 # #3196 (too low)
