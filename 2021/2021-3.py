@@ -1,8 +1,8 @@
+import os
 
-
-with open('./input-3.txt','r') as f:
+#print(os.getcwd())
+with open('2021\\input-3.txt','r') as f:
 	logs = [d.rstrip() for d in f.readlines()]
-
 #print(len(logs))
 mpop = []
 
