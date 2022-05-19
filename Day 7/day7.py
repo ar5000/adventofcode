@@ -15,7 +15,8 @@ def findbag(color):
                 shiny.append(line)
     if count == len(shiny):
         return shiny
-    else: 
+    else:
+        return findbag(??)
 
 
     return shiny
