@@ -1,4 +1,6 @@
 import os
+import numpy as np
+
 
 #print(os.getcwd())
 with open('2021\\input-3.txt','r') as f:
