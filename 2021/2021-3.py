@@ -5,18 +5,18 @@ import numpy as np
 #print(os.getcwd())
 with open('2021\\input-3.txt','r') as f:
 	logs = [d.rstrip() for d in f.readlines()]
-#print(len(logs))
-mpop = []
+# print(logs)
 
-for i in range(len(logs[0])):
-#	print('i',i,sep='\n')
-	
-	mpop.append(round(sum(int(n[i]) for n in logs)/len(logs)))
+nlog = np.array([[int(x) for x in logs[i]] for i in range(len(logs))])
 
-lpops = ''.join(str(int(not i)) for i in mpop)
+print(nlog)
 
-mpops = ''.join(str(i) for i in mpop)
+mpop = [*map(int, list(np.around(nlog.sum(axis=0)/len(logs))))]
+lpop = [int(not i) for i in mpop] 
 
-print(mpops,lpops)
+mpop_int = int(''.join(map(str,mpop)),2)
+lpop_int = int(''.join(map(str,lpop)),2)
 
-print(int(mpops,2)*int(lpops,2))
+print(mpop_int, lpop_int)
+
+print(f'The product is {mpop_int * lpop_int}')
