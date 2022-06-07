@@ -4,7 +4,7 @@ from pprint import pprint
 from itertools import chain
 
 #print(os.getcwd())
-with open('2021\\input-4.txt','r') as f:
+with open('2021\\input-4b.txt','r') as f:
 	game = [d.rstrip() for d in f.readlines()]
 
 draws = [*map(int,game[0].split(','))] # working
@@ -20,6 +20,8 @@ pprint(boards)
 
 print(draws)
 
+
+
 for num in draws[:]:
 	i = np.where(boards == num)
 	print(f'num= {num}')
@@ -33,7 +35,11 @@ for num in draws[:]:
 			print("Bingo")
 			winner = b
 			leave = 1
+			# boards = np.delete(boards, winner[0])
+			# marked = np.delete(marked, winner[0])
 			break
+
+
 
 	if leave:
 		break
