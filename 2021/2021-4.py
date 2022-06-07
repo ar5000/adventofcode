@@ -4,16 +4,10 @@ from pprint import pprint
 from itertools import chain
 
 #print(os.getcwd())
-with open('2021\\input-4b.txt','r') as f:
+with open('2021\\input-4.txt','r') as f:
 	game = [d.rstrip() for d in f.readlines()]
 
-# pprint(game)
-
 draws = [*map(int,game[0].split(','))] # working
-
-
-
-# pprint(marked)
 
 boards = list(chain.from_iterable([item.split(' ') for item in game[1:]]))
 
@@ -23,7 +17,6 @@ marked = np.zeros((board_count,5,5),dtype=int)
 boards = np.array([int(item) for item in boards if item]).reshape(board_count,5,5)
 
 pprint(boards)
-# pprint(marked)
 
 print(draws)
 
@@ -33,16 +26,23 @@ for num in draws[:]:
 	pprint(i)
 
 	marked[i] = 1
+	leave = 0
 
-	for b,board in np.ndenumerate(marked):
-		if marked[b[0:2]].sum() == 5:
-			pprint(b)
-			pprint(marked[b[0:2]])
-			print("bingo")
-			pprint(boards[board])
-			pprint(marked)
-			exit()
+	for b,value in np.ndenumerate(marked):
+		if marked[b[0:2]].sum() == 5 or marked[b[0],:,b[2]].sum() == 5:  # might want to check for columns here too
+			print("Bingo")
+			winner = b
+			leave = 1
+			break
 
+	if leave:
+		break
 	
-
+print("Marked locations: ")
 pprint(marked)
+pprint(boards[winner[0]])
+sumboard = marked[b[0]] == 0
+sumboard = boards[winner[0]][sumboard]
+print(sumboard.sum() * num)
+
+#76704
