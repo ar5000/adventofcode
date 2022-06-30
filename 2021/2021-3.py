@@ -39,7 +39,7 @@ popl = []
 
 for x in [1,0]:
 	nlog = np.array([[int(x) for x in logs[i]] for i in range(len(logs))])
-	# print("nlog:\n", nlog)
+	print("nlog:\n", nlog)
 	for i in range(len(logs[0])):
 		xpop = sum2pop(nlog,i,x)
 		b = nlog[:,i] == xpop
