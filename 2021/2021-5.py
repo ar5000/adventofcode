@@ -1,5 +1,7 @@
 import numpy as np
-import pprint
+import time
+
+start = time.time()
 
 fname = '2021/input-5.txt'
 # dtype1 = np.dtype([('x1', 'i'), ('y1', 'i'), ('x2','i'), ('y2','i')]) # names elements
@@ -44,7 +46,7 @@ for vent in vents:
         ocean[vent[y1],vent[x1]:vent[x2]+1] += 1
     # print(f'x1: {vent[x1]}\t x2: {vent[x2]}\t y1: {vent[y1]}\t y2: {vent[y2]}')
     else:# vent[x1] not vent[x2] or vent[y1] not vent[y2]:
-        print(f'diagonal: {vent}')
+        # print(f'diagonal: {vent}')
         diags = []
         for step in range(abs(vent[x2]-vent[x1])+1):
             if vent[x1] > vent[x2] and vent[y1] > vent[y2]: # subtract x and y
@@ -62,10 +64,12 @@ for vent in vents:
 
 
 
-print(ocean)
+# print(ocean)
 
 overlap = ocean > 1
 
 print(f'Overlaps: {len(ocean[overlap])}')
+end = time.time()
+print(f'Time: {end-start}')
 
 #21488 too high
