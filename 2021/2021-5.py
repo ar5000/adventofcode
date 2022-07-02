@@ -60,10 +60,6 @@ for vent in vents:
         for item in diags:
             ocean[item[1],item[0]] += 1
         
-        
-
-
-
 # print(ocean)
 
 overlap = ocean > 1
