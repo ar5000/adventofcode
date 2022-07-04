@@ -1,9 +1,9 @@
-from gettext import find
+
 import numpy as np
 import time
 
-lfs = np.fromfile("2021/input6b.txt", dtype=int, count=-1, sep=',')
-days = 80
+lfs = np.fromfile("2021/input6.txt", dtype=int, count=-1, sep=',')
+days = 256
 
 for day in range(1,days+1):
     start = time.time()
