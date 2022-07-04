@@ -1,8 +1,12 @@
-from gettext import find
+
 import numpy as np
 import time
 
+<<<<<<< HEAD
 lfs = np.fromfile("./input6.txt", dtype=float, count=-1, sep=',')
+=======
+lfs = np.fromfile("2021/input6.txt", dtype=int, count=-1, sep=',')
+>>>>>>> df87e6f23eb8ce53f0203b1805660b8b27375134
 days = 256
 
 for day in range(1,days+1):
