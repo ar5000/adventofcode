@@ -1,14 +1,18 @@
 import numpy as np
 import time
 
-lfs = np.empty([22599789478], dtype=np.int8)
+np.set_printoptions(threshold=np.inf)
 
-initial = np.fromfile("2021/input6.txt", dtype=np.int8, count=-1, sep=',')
+lfs = np.empty([2259978947], dtype=np.int8)
+
+initial = np.fromfile("input6.txt", dtype=np.int8, count=-1, sep=',')
 
 lfs[:initial.size] += initial
 
 days = 256
 school = initial.size
+
+begin = time.time()
 
 for day in range(1, days+1):
     start = time.time()
@@ -22,9 +26,13 @@ for day in range(1, days+1):
     lfs[:school][(lfs[:school] == -1)] = 6
     resetmoms = time.time()
     school = newcount
-    print(f'Day: {day}\t count: {newcount}')
+    print(f'Day: {day}\t count: {newcount}')#\t {lfs[:school]}')
     print(f'Subtract 1: {minusone-start}')
     # print(f'Find Babies: {findmoms-minusone}')
     print(f'Make babies: {findbabies-minusone}')
     print(f'Reset Moms: {appendnewborns-findbabies}')
-    print(f'Add babies to lfs: {resetmoms-appendnewborns}\n\n\n')
+    print(f'Add babies to lfs: {resetmoms-appendnewborns}')
+    print(f'Loop time: {time.time()-start}')
+    print(f'Total Elapsed: {time.time()-begin}\n\n\n')
+
+    #26285325879 too low
