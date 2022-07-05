@@ -3,13 +3,13 @@ import time
 
 np.set_printoptions(threshold=np.inf)
 
-lfs = np.empty([2259978947], dtype=np.int8)
-               26285325879
-initial = np.fromfile("input6.txt", dtype=np.int8, count=-1, sep=',')
+lfs = np.empty([29599789470], dtype=np.int8)
+#               26285325879
+initial = np.fromfile("2021/input6.txt", dtype=np.int8, count=-1, sep=',')
 
 lfs[:initial.size] += initial
 
-days = 80
+days = 256
 school = initial.size
 
 begin = time.time()
