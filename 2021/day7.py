@@ -2,9 +2,11 @@ import numpy as np
 
 crabs = np.fromfile("2021/input7.txt", dtype=int, sep=',', count=-1)
 
-fuel = {crab:0 for crab in range(crabs.max())}
+steps = {crab:0 for crab in range(crabs.max())}
 
-for crab in range(crabs.max()):
-    fuel[crab] = sum(abs(crabs - crab))
+for pos in range(crabs.max()):
+    steps[pos] = abs(crabs - pos)
 
-print(f'The least amount of fuel needed is {sorted(fuel.values())[0]}')
+fuel = np.array([sum([sum(range(step+1)) for step in pos]) for pos in steps.values()], dtype=int)
+
+print(f'The least amount of fuel needed is {fuel.min()}')
